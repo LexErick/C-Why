@@ -22,9 +22,9 @@ int *good(void) {
 
 int main (void) {
 
-    int x = good();
+    int *x = good();
 
-    printf("Value: %d\n", x);
+    printf("Value: %d\n", *x);
 
     free(x);
     x = NULL;
