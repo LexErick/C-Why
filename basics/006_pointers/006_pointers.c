@@ -8,26 +8,35 @@ int *make_number(void) {
     return p;   // Ownership transfered to caller...
 }
 
+/* Function 'a()' */
 int *a(void) {
     return malloc(sizeof(int));
 }
 
+/* Function 'b()' */
+void b (int *p) {
+    printf("\nValue stored for [ z ] = [ %d ]", *p);
+}
+
 int main(void) {
     int *x = make_number();
-    printf("\nValue stored for [ x ] = {%d}", *x);
+    printf("\nValue stored for [ x ] = { %d }", *x);
     free(x);
     x = NULL;
 
     /* Below code causes a 'Segmentation Fault (core dump) */
 //    int *y = a();
-//    printf("\nValue stored for [ y ] = {%d}", *x);   // Dereferencing NULL...
+//    printf("\nValue stored for [ y ] = { %d }", *x);   // Dereferencing NULL...
 //    free(y);
 //    y = NULL;
 
+    /* Calling function 'a()' */
     int *y = a();
     printf("\nValue stored for [ y ] = {%d}", *y);
     free(y);
     y = NULL;
 
-    return 0;
+    /* Calling function 'b()' */
+    int v = 222;
+    b(&v);
 }

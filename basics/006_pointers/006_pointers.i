@@ -1980,34 +1980,36 @@ int *make_number(void) {
     return p;
 }
 
+
 int *a(void) {
     return malloc(sizeof(int));
 }
 
+
+void b (int *p) {
+    printf("\nValue stored for [ z ] = [ %d ]", *p);
+}
+
 int main(void) {
     int *x = make_number();
-    printf("\nValue stored for [ x ] = {%d}", *x);
+    printf("\nValue stored for [ x ] = { %d }", *x);
     free(x);
     x = 
-# 19 "006_pointers.c" 3 4
+# 25 "006_pointers.c" 3 4
        ((void *)0)
-# 19 "006_pointers.c"
+# 25 "006_pointers.c"
            ;
-
-
-
-
-
-
-
+# 34 "006_pointers.c"
     int *y = a();
     printf("\nValue stored for [ y ] = {%d}", *y);
     free(y);
     y = 
-# 30 "006_pointers.c" 3 4
+# 37 "006_pointers.c" 3 4
        ((void *)0)
-# 30 "006_pointers.c"
+# 37 "006_pointers.c"
            ;
 
-    return 0;
+
+    int v = 222;
+    b(&v);
 }
