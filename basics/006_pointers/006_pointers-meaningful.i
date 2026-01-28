@@ -1,9 +1,9 @@
-# 0 "006_pointers.c"
+# 0 "006_pointers-meaningful.c"
 # 0 "<built-in>"
 # 0 "<command-line>"
 # 1 "/usr/include/stdc-predef.h" 1 3 4
 # 0 "<command-line>" 2
-# 1 "006_pointers.c"
+# 1 "006_pointers-meaningful.c"
 # 1 "/usr/include/stdio.h" 1 3 4
 # 28 "/usr/include/stdio.h" 3 4
 # 1 "/usr/include/bits/libc-header-start.h" 1 3 4
@@ -814,7 +814,7 @@ extern int __uflow (FILE *);
 extern int __overflow (FILE *, int);
 # 973 "/usr/include/stdio.h" 3 4
 
-# 2 "006_pointers.c" 2
+# 2 "006_pointers-meaningful.c" 2
 # 1 "/usr/include/stdlib.h" 1 3 4
 # 26 "/usr/include/stdlib.h" 3 4
 # 1 "/usr/include/bits/libc-header-start.h" 1 3 4
@@ -1969,47 +1969,39 @@ extern int getloadavg (double __loadavg[], int __nelem)
 # 1156 "/usr/include/stdlib.h" 2 3 4
 # 1167 "/usr/include/stdlib.h" 3 4
 
-# 3 "006_pointers.c" 2
+# 3 "006_pointers-meaningful.c" 2
 
 
-
-# 5 "006_pointers.c"
+# 4 "006_pointers-meaningful.c"
 int *make_number(void) {
     int *p = malloc(sizeof(int));
     *p = 42;
     return p;
 }
 
-
-int *a(void) {
-    return malloc(sizeof(int));
-}
-
-
-void b (int *p) {
-    printf("\nValue stored for [ z ] = [ %d ]", *p);
+int *c(int *p) {
+    return p;
 }
 
 int main(void) {
     int *x = make_number();
-    printf("\nValue stored for [ x ] = { %d }", *x);
+
+    int *y = c(x);
+
+    printf("x = %d\n", *x);
+    printf("y = %d\n", *y);
+
     free(x);
     x = 
-# 25 "006_pointers.c" 3 4
+# 23 "006_pointers-meaningful.c" 3 4
        ((void *)0)
-# 25 "006_pointers.c"
+# 23 "006_pointers-meaningful.c"
            ;
-# 34 "006_pointers.c"
-    int *y = a();
-    printf("\nValue stored for [ y ] = {%d}", *y);
-    free(y);
     y = 
-# 37 "006_pointers.c" 3 4
+# 24 "006_pointers-meaningful.c" 3 4
        ((void *)0)
-# 37 "006_pointers.c"
+# 24 "006_pointers-meaningful.c"
            ;
 
-
-    int v = 222;
-    b(&v);
+    return 0;
 }
